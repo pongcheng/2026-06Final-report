@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-title">
+    <h1>上市股票搜尋器</h1>
+    <p>
+        輸入台灣上市股票代號，即可查詢最近一個月的開盤價、收盤價、最高價、最低價與最近 10 個交易日資料。
+    </p>
+</section>
+
+<form method="POST" class="filter-box">
+    <h2>輸入股票代號</h2>
+
+    <input
+        class="stock-input"
+        type="text"
+        name="stock_no"
+        placeholder="例如：2330、6530"
+        value="{{ stock_no }}"
+    >
+
+    <button type="submit" class="btn">開始查詢</button>
+</form>
+
+{% if result %}
+
+    {% if result.success %}
+
+        <section class="summary">
+            <div>
+                <h3>股票代號</h3>
+                <p>{{ result.stock_no }}</p>
+            </div>
+
+            <div>
+                <h3>最近日期</h3>
+                <p>{{ result.latest_date }}</p>
+            </div>
+
+            <div>
+                <h3>開盤價</h3>
+                <p>{{ result.latest_open }}</p>
+            </div>
+
+            <div>
+                <h3>收盤價</h3>
+                <p>{{ result.latest_close }}</p>
+            </div>
+
+            <div>
+                <h3>月最高價</h3>
+                <p>{{ result.month_high }}</p>
+            </div>
+
+            <div>
+                <h3>月最低價</h3>
+                <p>{{ result.month_low }}</p>
+            </div>
+        </section>
+
+        <section class="stock-table-box">
+            <h2>最近 10 個交易日</h2>
+
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>開盤價</th>
+                        <th>最高價</th>
+                        <th>最低價</th>
+                        <th>收盤價</th>
+                        <th>成交股數</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for row in result.last10 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{{ row[6] }}</td>
+                            <td>{{ row[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+    {% else %}
+
+        <section class="report-box">
+            <h2>查詢結果</h2>
+            <p class="empty">{{ result.message }}</p>
+        </section>
+
+    {% endif %}
+
+{% endif %}
+
+{% endblock %}

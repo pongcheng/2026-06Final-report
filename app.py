@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from copy import deepcopy
+from datetime import datetime
+import requests
 
 app = Flask(__name__)
 
@@ -547,7 +549,76 @@ BLUEPRINT_TEMPLATE = [
         ],
     },
 ]
+def clean_price(value):
+    """把價格字串轉成 float，順便去掉逗號"""
+    value = str(value).replace(",", "").strip()
 
+    if value in ["--", "---", ""]:
+        return None
+
+    try:
+        return float(value)
+    except ValueError:
+        return None
+
+
+def search_stock(stock_no):
+    """
+    上市股票搜尋器：
+    使用台灣證券交易所 STOCK_DAY API 查詢上市股票。
+    """
+    today = datetime.today()
+    date_str = today.strftime("%Y%m") + "01"
+
+    url = (
+        "https://www.twse.com.tw/exchangeReport/STOCK_DAY"
+        f"?response=json&date={date_str}&stockNo={stock_no}"
+    )
+
+    try:
+        res = requests.get(url, timeout=10)
+        data = res.json()
+    except Exception:
+        return {
+            "success": False,
+            "message": "查詢失敗，可能是網路連線或證交所資料暫時無法讀取。"
+        }
+
+    if data.get("stat") != "OK" or "data" not in data or len(data["data"]) == 0:
+        return {
+            "success": False,
+            "message": "股票代號錯誤，或查無資料。本系統目前僅支援上市股票。"
+        }
+
+    rows = data["data"]
+    latest = rows[-1]
+
+    highs = []
+    lows = []
+
+    for row in rows:
+        high = clean_price(row[4])
+        low = clean_price(row[5])
+
+        if high is not None:
+            highs.append(high)
+
+        if low is not None:
+            lows.append(low)
+
+    last10 = rows[-10:] if len(rows) >= 10 else rows
+
+    return {
+        "success": True,
+        "stock_no": stock_no,
+        "title": data.get("title", "上市股票資料"),
+        "latest_date": latest[0],
+        "latest_open": latest[3],
+        "latest_close": latest[6],
+        "month_high": max(highs) if highs else None,
+        "month_low": min(lows) if lows else None,
+        "last10": last10
+    }
 
 def filter_items(items, selected_tags):
     if not selected_tags:
@@ -733,7 +804,27 @@ def blueprint():
         data=data,
         summary=summary
     )
+@app.route("/stock", methods=["GET", "POST"])
+def stock():
+    result = None
+    stock_no = ""
 
+    if request.method == "POST":
+        stock_no = request.form.get("stock_no", "").strip()
+
+        if stock_no == "":
+            result = {
+                "success": False,
+                "message": "請輸入股票代號，例如 2330。"
+            }
+        else:
+            result = search_stock(stock_no)
+
+    return render_template(
+        "stock.html",
+        result=result,
+        stock_no=stock_no
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
