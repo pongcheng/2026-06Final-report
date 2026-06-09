@@ -324,3 +324,29 @@ nav a:hover {
         font-size: 28px;
     }
 }
+.tech-label {
+    color: #ffd166;
+    font-weight: bold;
+}
+
+.sub-title {
+    margin: 16px 0 8px;
+    color: #8dd6ff;
+    font-size: 15px;
+}
+
+.variant.owned {
+    background: #1f4d3a;
+    border-color: #3ddc84;
+}
+
+.variant.missing {
+    background: #33252b;
+    border-color: #ff6b6b;
+    color: #ffd6d6;
+}
+
+.variant small {
+    margin-left: 6px;
+    color: #ffd166;
+}

@@ -5,7 +5,7 @@
 <section class="page-title">
     <h1>星際獵人／無盡的拉格朗日藍圖統計系統</h1>
     <p>
-        依照艦船分類、藍圖型號與科技點，統計目前帳號的藍圖收集狀況。
+        本頁面已整合完整藍圖資料，包含艦船、型號、模組、科技點與收集狀態。
     </p>
 </section>
 
@@ -19,13 +19,28 @@
 
 <section class="summary">
     <div>
-        <h3>全藍圖收集</h3>
+        <h3>總收集</h3>
         <p>{{ summary.owned }} / {{ summary.total }}</p>
     </div>
 
     <div>
         <h3>完成率</h3>
         <p>{{ summary.percent }}%</p>
+    </div>
+
+    <div>
+        <h3>艦船藍圖</h3>
+        <p>{{ summary.ship_owned }} / {{ summary.ship_total }}</p>
+    </div>
+
+    <div>
+        <h3>型號藍圖</h3>
+        <p>{{ summary.variant_owned }} / {{ summary.variant_total }}</p>
+    </div>
+
+    <div>
+        <h3>模組收集</h3>
+        <p>{{ summary.module_owned }} / {{ summary.module_total }}</p>
     </div>
 
     <div>
@@ -43,7 +58,7 @@
             <div class="category-header">
                 <h2>{{ category.category }}</h2>
                 <p>
-                    藍圖：{{ category.owned }} / {{ category.total }}
+                    分類收集：{{ category.owned }} / {{ category.total }}
                     ｜完成率：{{ category.percent }}%
                     ｜科技點：{{ category.tech_sum }}
                 </p>
@@ -54,39 +69,57 @@
 
                 <div class="ship-card">
                     <div class="ship-title">
-                        <h3>{{ ship.name }}</h3>
+                        <h3>
+                            {% if ship.owned %}
+                                ✅
+                            {% else %}
+                                ⬜
+                            {% endif %}
+                            {{ ship.name }}
+                        </h3>
 
-                        <label>
-                            科技點：
-                            <input
-                                type="number"
-                                name="tech_{{ c_index }}_{{ s_index }}"
-                                value="{{ ship.tech }}"
-                                min="0"
-                            >
-                        </label>
+                        <span class="tech-label">科技點：{{ ship.tech }}</span>
                     </div>
 
-                    <div class="variant-area">
-                        {% for variant in ship.variants %}
-                            {% set v_index = loop.index0 %}
+                    {% if ship.variants %}
+                        <h4 class="sub-title">型號藍圖</h4>
+                        <div class="variant-area">
+                            {% for variant in ship.variants %}
+                                <span class="variant {% if variant.owned %}owned{% else %}missing{% endif %}">
+                                    {% if variant.owned %}
+                                        ✅
+                                    {% else %}
+                                        ⬜
+                                    {% endif %}
+                                    {{ variant.name }}
+                                    {% if variant.progress %}
+                                        <small>{{ variant.progress }}</small>
+                                    {% endif %}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
-                            <label class="variant">
-                                <input
-                                    type="checkbox"
-                                    name="owned_{{ c_index }}_{{ s_index }}_{{ v_index }}"
-                                    {% if variant.owned %}checked{% endif %}
-                                >
-                                {{ variant.name }}
-                            </label>
-                        {% endfor %}
-                    </div>
+                    {% if ship.modules %}
+                        <h4 class="sub-title">模組系統</h4>
+                        <div class="variant-area">
+                            {% for module in ship.modules %}
+                                <span class="variant {% if module.owned %}owned{% else %}missing{% endif %}">
+                                    {% if module.owned %}
+                                        ✅
+                                    {% else %}
+                                        ⬜
+                                    {% endif %}
+                                    {{ module.code }} {{ module.name }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </section>
     {% endfor %}
 
-    <button type="submit" class="btn fixed-btn">重新計算統計</button>
 </form>
 
 {% endblock %}

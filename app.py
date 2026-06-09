@@ -130,6 +130,7 @@ JPOP_DATA = [
 # =========================
 # 無盡 / 星際獵人藍圖資料
 # =========================
+
 BLUEPRINT_TEMPLATE = [
     {
         "category": "航空母艦",
@@ -137,128 +138,414 @@ BLUEPRINT_TEMPLATE = [
             {
                 "name": "CV3000",
                 "tech": 53,
-                "variants": [
-                    {"name": "綜合戰機", "owned": True},
-                    {"name": "綜合平台", "owned": True},
-                    {"name": "大型機倉", "owned": False}
-                ]
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "綜合戰機", "owned": True},
+                    {"code": "M2", "name": "綜合平台", "owned": True},
+                    {"code": "M3", "name": "大型機倉", "owned": False},
+                    {"code": "A1", "name": "龍石火炮", "owned": True},
+                    {"code": "A2", "name": "防空導彈", "owned": True},
+                    {"code": "B1", "name": "導彈防禦", "owned": True},
+                    {"code": "B2", "name": "炮艇平台", "owned": True},
+                    {"code": "B3", "name": "無人機台", "owned": False},
+                ],
             },
             {
                 "name": "太陽鯨",
                 "tech": 91,
-                "variants": [
-                    {"name": "護航艇倉", "owned": True},
-                    {"name": "大型載機", "owned": False},
-                    {"name": "載機平台", "owned": True},
-                    {"name": "維修飛機", "owned": True}
-                ]
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "護航艇倉", "owned": True},
+                    {"code": "M2", "name": "大型載機", "owned": False},
+                    {"code": "A1", "name": "綜合武器", "owned": True},
+                    {"code": "A2", "name": "投射平台", "owned": True},
+                    {"code": "A3", "name": "綜合火炮", "owned": False},
+                    {"code": "B1", "name": "載機維護", "owned": True},
+                    {"code": "B2", "name": "炮艇平台", "owned": False},
+                    {"code": "C1", "name": "載機平台", "owned": True},
+                    {"code": "C2", "name": "攻城飛機", "owned": True},
+                    {"code": "C3", "name": "防空導彈", "owned": False},
+                ],
+            },
+            {
+                "name": "南十字元帥級",
+                "tech": 0,
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "綜合武器", "owned": True},
+                    {"code": "M2", "name": "綜合武器", "owned": False},
+                    {"code": "A1", "name": "載機平台", "owned": True},
+                    {"code": "A2", "name": "護航艇倉", "owned": False},
+                    {"code": "B1", "name": "載機平台", "owned": False},
+                    {"code": "B2", "name": "導彈防禦", "owned": False},
+                    {"code": "B3", "name": "偵查飛機", "owned": False},
+                    {"code": "C1", "name": "能源系統", "owned": True},
+                    {"code": "C2", "name": "火控輔助", "owned": False},
+                ],
+            },
+            {
+                "name": "永恆蒼穹級",
+                "tech": 0,
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "機庫一型", "owned": True},
+                    {"code": "M2", "name": "機庫二型", "owned": False},
+                    {"code": "M3", "name": "機庫三型", "owned": False},
+                    {"code": "A1", "name": "火炮系統", "owned": True},
+                    {"code": "A2", "name": "離子炮塔", "owned": False},
+                    {"code": "A3", "name": "脈衝防空", "owned": False},
+                    {"code": "B1", "name": "反艦投射", "owned": False},
+                    {"code": "B2", "name": "防禦攔截", "owned": False},
+                    {"code": "B3", "name": "防空平台", "owned": False},
+                    {"code": "C1", "name": "大型載機", "owned": False},
+                    {"code": "C2", "name": "火控輔助", "owned": False},
+                    {"code": "C3", "name": "維修飛機", "owned": False},
+                ],
             },
             {
                 "name": "FSV830",
                 "tech": 65,
-                "variants": [
-                    {"name": "工程維修", "owned": True},
-                    {"name": "戰略存儲", "owned": True},
-                    {"name": "炮艇生產", "owned": True},
-                    {"name": "戰機生產", "owned": False}
-                ]
-            }
-        ]
+                "owned": True,
+                "modules": [
+                    {"code": "A1", "name": "工程維修", "owned": True},
+                    {"code": "A2", "name": "戰略存儲", "owned": True},
+                    {"code": "B1", "name": "護衛生產", "owned": True},
+                    {"code": "B2", "name": "炮艇生產", "owned": True},
+                    {"code": "B3", "name": "戰機生產", "owned": False},
+                    {"code": "C1", "name": "載機平台", "owned": True},
+                    {"code": "C2", "name": "維修飛機", "owned": True},
+                    {"code": "D1", "name": "預警指揮", "owned": True},
+                    {"code": "D2", "name": "協同指揮", "owned": True},
+                    {"code": "D3", "name": "干擾指揮", "owned": False},
+                    {"code": "E1", "name": "區域防空", "owned": False},
+                    {"code": "E2", "name": "護航艇倉", "owned": False},
+                ],
+            },
+            {
+                "name": "埃迪卡拉級",
+                "tech": 0,
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "堡壘重炮", "owned": True},
+                    {"code": "M2", "name": "堡壘軌道", "owned": False},
+                    {"code": "B1", "name": "護衛生產", "owned": True},
+                    {"code": "B2", "name": "炮艇生產", "owned": True},
+                    {"code": "B3", "name": "驅逐生產", "owned": False},
+                    {"code": "C1", "name": "大型載機", "owned": False},
+                    {"code": "C2", "name": "炮艇船塢", "owned": False},
+                    {"code": "D1", "name": "苔原攔截", "owned": True},
+                    {"code": "D2", "name": "蜂鳥偵查", "owned": False},
+                    {"code": "D3", "name": "巨像護衛", "owned": False},
+                    {"code": "E1", "name": "重型裝甲", "owned": False},
+                    {"code": "E2", "name": "納米維修", "owned": False},
+                ],
+            },
+        ],
     },
+
     {
         "category": "戰鬥巡洋艦",
         "ships": [
             {
                 "name": "新君士坦丁大帝級",
                 "tech": 1,
-                "variants": [
-                    {"name": "離子攻擊", "owned": True},
-                    {"name": "離子投射", "owned": False},
-                    {"name": "通用火炮", "owned": True},
-                    {"name": "能源系統", "owned": True}
-                ]
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "離子攻擊", "owned": True},
+                    {"code": "M2", "name": "離子投射", "owned": False},
+                    {"code": "A1", "name": "投射攻擊", "owned": True},
+                    {"code": "A2", "name": "投射攻擊", "owned": False},
+                    {"code": "B1", "name": "通用火炮", "owned": True},
+                    {"code": "B2", "name": "脈衝防空", "owned": False},
+                    {"code": "B3", "name": "防空導彈", "owned": True},
+                    {"code": "C1", "name": "能源系統", "owned": True},
+                    {"code": "C2", "name": "艦載機倉", "owned": False},
+                    {"code": "C3", "name": "偵察機倉", "owned": True},
+                    {"code": "D1", "name": "防空系統", "owned": True},
+                    {"code": "D2", "name": "防護模組", "owned": False},
+                    {"code": "D3", "name": "損管系統", "owned": False},
+                ],
             },
+            {"name": "安東塔斯持劍者級", "tech": 0, "owned": False},
             {
                 "name": "烏拉諾斯之矛",
                 "tech": 54,
-                "variants": [
-                    {"name": "重軌道炮", "owned": True},
-                    {"name": "堡壘火炮", "owned": True},
-                    {"name": "防空系統", "owned": True},
-                    {"name": "附加裝甲", "owned": False}
-                ]
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "重軌道炮", "owned": True},
+                    {"code": "M2", "name": "離子炮塔", "owned": False},
+                    {"code": "A1", "name": "堡壘火炮", "owned": True},
+                    {"code": "A2", "name": "堡壘火炮", "owned": True},
+                    {"code": "A3", "name": "堡壘火炮", "owned": False},
+                    {"code": "B1", "name": "礦車投射", "owned": False},
+                    {"code": "B2", "name": "護航艇倉", "owned": False},
+                    {"code": "B3", "name": "損管系統", "owned": False},
+                    {"code": "C1", "name": "防空系統", "owned": True},
+                    {"code": "C2", "name": "附加裝甲", "owned": False},
+                    {"code": "C3", "name": "攔截系統", "owned": True},
+                ],
             },
             {
                 "name": "普魯圖斯之盾",
                 "tech": 250,
-                "variants": [
-                    {"name": "綜合武器", "owned": True},
-                    {"name": "綜合火炮", "owned": False},
-                    {"name": "附加裝甲", "owned": False},
-                    {"name": "反導攔截", "owned": False}
-                ]
+                "owned": True,
+                "modules": [
+                    {"code": "M1", "name": "綜合武器", "owned": True},
+                    {"code": "M2", "name": "綜合火炮", "owned": False},
+                    {"code": "M3", "name": "礦車投射", "owned": False},
+                    {"code": "A1", "name": "堡壘護衛", "owned": True},
+                    {"code": "A2", "name": "火控A型", "owned": False},
+                    {"code": "A3", "name": "火控B型", "owned": False},
+                    {"code": "B1", "name": "綜合維修", "owned": False},
+                    {"code": "B2", "name": "附加裝甲", "owned": False},
+                    {"code": "B3", "name": "反導攔截", "owned": False},
+                    {"code": "C1", "name": "多重反擊", "owned": False},
+                    {"code": "C2", "name": "防空攔截", "owned": False},
+                    {"code": "C3", "name": "重型投射", "owned": False},
+                ],
             },
-            {
-                "name": "ST59",
-                "tech": 15,
-                "variants": [
-                    {"name": "重軌道炮", "owned": True},
-                    {"name": "攻堅魚雷", "owned": True},
-                    {"name": "軌道炮塔", "owned": True},
-                    {"name": "電磁裝甲", "owned": True}
-                ]
-            }
-        ]
+            {"name": "永恆風暴", "tech": 0, "owned": True},
+            {"name": "ST59", "tech": 15, "owned": True},
+            {"name": "雷火之星", "tech": 0, "owned": True},
+        ],
     },
+
     {
         "category": "巡洋艦",
         "ships": [
-            {
-                "name": "艾奧級",
-                "tech": 0,
-                "variants": [
-                    {"name": "離子炮", "owned": True},
-                    {"name": "反艦型", "owned": False},
-                    {"name": "攻城型", "owned": False}
-                ]
-            },
-            {
-                "name": "奇美拉級",
-                "tech": 50,
-                "variants": [
-                    {"name": "炮彈型", "owned": True},
-                    {"name": "重炮型", "owned": True},
-                    {"name": "防衛型", "owned": True}
-                ]
-            },
-            {
-                "name": "卡利斯托級",
-                "tech": 83,
-                "variants": [
-                    {"name": "魚雷型", "owned": True},
-                    {"name": "反艦型", "owned": True},
-                    {"name": "支援型", "owned": False}
-                ]
-            },
-            {
-                "name": "獵兵級",
-                "tech": 50,
-                "variants": [
-                    {"name": "支援型", "owned": True},
-                    {"name": "反艦型", "owned": True}
-                ]
-            },
-            {
-                "name": "CAS066級",
-                "tech": 75,
-                "variants": [
-                    {"name": "綜合型", "owned": True},
-                    {"name": "炮擊型", "owned": True},
-                    {"name": "載機型", "owned": False}
-                ]
-            }
-        ]
-    }
+            {"name": "艾奧級", "tech": 0, "owned": True, "variants": [
+                {"name": "離子炮", "owned": True, "progress": ""},
+                {"name": "反艦型", "owned": False, "progress": "20%"},
+                {"name": "攻城型", "owned": False, "progress": "20%"},
+            ]},
+            {"name": "奇美拉級", "tech": 50, "owned": True, "variants": [
+                {"name": "炮彈型", "owned": True, "progress": ""},
+                {"name": "重炮型", "owned": True, "progress": ""},
+                {"name": "防衛型", "owned": True, "progress": ""},
+            ]},
+            {"name": "卡利斯托級", "tech": 83, "owned": True, "variants": [
+                {"name": "魚雷型", "owned": True, "progress": ""},
+                {"name": "反艦型", "owned": True, "progress": ""},
+                {"name": "支援型", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "獵兵級", "tech": 50, "owned": True, "variants": [
+                {"name": "支援型", "owned": True, "progress": ""},
+                {"name": "反艦型", "owned": True, "progress": ""},
+            ]},
+            {"name": "康納混沌級", "tech": 0, "owned": True, "variants": [
+                {"name": "軌道炮", "owned": True, "progress": ""},
+                {"name": "電漿型", "owned": False, "progress": "35%"},
+            ]},
+            {"name": "光錐級", "tech": 20, "owned": True, "variants": [
+                {"name": "通用型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": True, "progress": ""},
+                {"name": "突擊型", "owned": True, "progress": ""},
+            ]},
+            {"name": "狩獵者級", "tech": 70, "owned": True, "variants": [
+                {"name": "通用型", "owned": True, "progress": ""},
+                {"name": "戰術型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": False, "progress": "20%"},
+            ]},
+            {"name": "CAS066級", "tech": 75, "owned": True, "variants": [
+                {"name": "綜合型", "owned": True, "progress": ""},
+                {"name": "炮擊型", "owned": True, "progress": ""},
+                {"name": "載機型", "owned": False, "progress": "20%"},
+                {"name": "支援型", "owned": False, "progress": "80%"},
+            ]},
+            {"name": "KCCPV2.0", "tech": 9, "owned": True, "variants": [
+                {"name": "綜合型", "owned": True, "progress": ""},
+                {"name": "載機型", "owned": True, "progress": ""},
+                {"name": "軌道炮", "owned": False, "progress": "0%"},
+                {"name": "脈衝型", "owned": True, "progress": ""},
+            ]},
+            {"name": "遊騎兵級", "tech": 0, "owned": False, "variants": [
+                {"name": "綜合型", "owned": False, "progress": ""},
+                {"name": "離子炮", "owned": False, "progress": ""},
+            ]},
+        ],
+    },
+
+    {
+        "category": "驅逐艦",
+        "ships": [
+            {"name": "鬥牛級", "tech": 0, "owned": True, "variants": [
+                {"name": "攻擊型", "owned": True, "progress": ""},
+                {"name": "突擊型", "owned": True, "progress": ""},
+                {"name": "防禦型", "owned": False, "progress": "50%"},
+            ]},
+            {"name": "鬩神星級", "tech": 132, "owned": True, "variants": [
+                {"name": "火炮型", "owned": True, "progress": ""},
+                {"name": "重炮型", "owned": True, "progress": ""},
+                {"name": "裝甲型", "owned": True, "progress": ""},
+            ]},
+            {"name": "亞達伯拉級", "tech": 100, "owned": True, "variants": [
+                {"name": "通用型", "owned": True, "progress": ""},
+                {"name": "裝甲型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "創神星級", "tech": 75, "owned": True, "variants": [
+                {"name": "軌道炮", "owned": True, "progress": ""},
+                {"name": "魚雷型", "owned": True, "progress": ""},
+            ]},
+            {"name": "槍騎兵級", "tech": 111, "owned": True, "variants": [
+                {"name": "反艦型", "owned": True, "progress": ""},
+                {"name": "綜合型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": True, "progress": ""},
+            ]},
+            {"name": "衛士級", "tech": 3, "owned": True, "variants": [
+                {"name": "支援型", "owned": True, "progress": ""},
+                {"name": "兩棲型", "owned": False, "progress": "25%"},
+                {"name": "脈衝炮", "owned": False, "progress": "50%"},
+            ]},
+            {"name": "苔原級", "tech": 15, "owned": True, "variants": [
+                {"name": "支援型", "owned": True, "progress": ""},
+                {"name": "載機型", "owned": True, "progress": ""},
+            ]},
+            {"name": "谷神星級", "tech": 185, "owned": True, "variants": [
+                {"name": "載機型", "owned": True, "progress": ""},
+                {"name": "支援型", "owned": True, "progress": ""},
+                {"name": "戰術型", "owned": False, "progress": "25%"},
+            ]},
+            {"name": "AC721級", "tech": 85, "owned": True, "variants": [
+                {"name": "通用型", "owned": True, "progress": ""},
+                {"name": "載機型", "owned": True, "progress": ""},
+                {"name": "飛彈型", "owned": False, "progress": "0%"},
+            ]},
+        ],
+    },
+
+    {
+        "category": "護衛艦",
+        "ships": [
+            {"name": "刺水母級", "tech": 225, "owned": True, "variants": [
+                {"name": "特種型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": True, "progress": ""},
+                {"name": "登陸型", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "鋯石級", "tech": 0, "owned": False, "variants": [
+                {"name": "突擊型", "owned": False, "progress": ""},
+                {"name": "特種型", "owned": False, "progress": ""},
+            ]},
+            {"name": "雷里亞特級", "tech": 75, "owned": True, "variants": [
+                {"name": "反艦型", "owned": True, "progress": ""},
+                {"name": "魚雷型", "owned": True, "progress": ""},
+                {"name": "隱身型", "owned": True, "progress": ""},
+            ]},
+            {"name": "紅寶石級", "tech": 95, "owned": True, "variants": [
+                {"name": "軌道炮", "owned": True, "progress": ""},
+                {"name": "粒子炮", "owned": True, "progress": ""},
+                {"name": "防衛型", "owned": False, "progress": "35%"},
+            ]},
+            {"name": "雨海級", "tech": 0, "owned": False, "variants": [
+                {"name": "軌道炮", "owned": False, "progress": ""},
+                {"name": "脈衝型", "owned": False, "progress": ""},
+            ]},
+            {"name": "卡里萊恩級", "tech": 100, "owned": True, "variants": [
+                {"name": "偵查型", "owned": True, "progress": ""},
+                {"name": "重炮型", "owned": True, "progress": ""},
+                {"name": "特種型", "owned": True, "progress": ""},
+            ]},
+            {"name": "澄海級", "tech": 0, "owned": True, "variants": [
+                {"name": "反艦型", "owned": True, "progress": ""},
+                {"name": "飛彈型", "owned": False, "progress": "0%"},
+                {"name": "防空型", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "諾瑪級", "tech": 106, "owned": True, "variants": [
+                {"name": "攻城型", "owned": True, "progress": ""},
+                {"name": "支援型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": True, "progress": ""},
+            ]},
+            {"name": "靜海級", "tech": 66, "owned": True, "variants": [
+                {"name": "綜合型", "owned": True, "progress": ""},
+                {"name": "脈衝型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": True, "progress": ""},
+            ]},
+            {"name": "雲海級", "tech": 0, "owned": True, "variants": [
+                {"name": "突擊型", "owned": True, "progress": ""},
+                {"name": "防空型", "owned": True, "progress": ""},
+            ]},
+            {"name": "狼蜥級", "tech": 0, "owned": False, "variants": [
+                {"name": "防禦型", "owned": False, "progress": ""},
+                {"name": "突擊型", "owned": False, "progress": ""},
+                {"name": "特種型", "owned": False, "progress": ""},
+            ]},
+            {"name": "FG300級", "tech": 45, "owned": True, "variants": [
+                {"name": "多功能", "owned": True, "progress": ""},
+                {"name": "裝甲型", "owned": True, "progress": ""},
+                {"name": "偵察型", "owned": True, "progress": ""},
+            ]},
+        ],
+    },
+
+    {
+        "category": "護航艇",
+        "ships": [
+            {"name": "星雲追逐者", "tech": 105, "owned": True, "variants": [
+                {"name": "彈炮型", "owned": True, "progress": ""},
+                {"name": "脈衝型", "owned": True, "progress": ""},
+            ]},
+            {"name": "CV-T800", "tech": 123, "owned": True},
+            {"name": "蜂巢守衛者", "tech": 50, "owned": True},
+            {"name": "S-列維9號", "tech": 69, "owned": True},
+            {"name": "虛靈", "tech": 0, "owned": True},
+            {"name": "海爾波普", "tech": 0, "owned": False, "variants": [
+                {"name": "多功能", "owned": False, "progress": ""},
+                {"name": "對接型", "owned": False, "progress": ""},
+            ]},
+            {"name": "坦普爾1號", "tech": 0, "owned": False, "variants": [
+                {"name": "干擾型", "owned": False, "progress": ""},
+                {"name": "預警型", "owned": False, "progress": ""},
+            ]},
+            {"name": "RB7-13", "tech": 0, "owned": True, "variants": [
+                {"name": "攻擊型", "owned": True, "progress": ""},
+                {"name": "突防型", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "鰩", "tech": 5, "owned": True, "variants": [
+                {"name": "高速型", "owned": True, "progress": ""},
+                {"name": "防禦型", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "CV-M011", "tech": 100, "owned": True, "variants": [
+                {"name": "導彈型", "owned": True, "progress": ""},
+                {"name": "火炮型", "owned": False, "progress": "35%"},
+                {"name": "高速型", "owned": True, "progress": ""},
+            ]},
+            {"name": "CV-II003", "tech": 8, "owned": True},
+        ],
+    },
+
+    {
+        "category": "戰機",
+        "ships": [
+            {"name": "密斯托拉", "tech": 90, "owned": True},
+            {"name": "雷火V022", "tech": 0, "owned": False, "variants": [
+                {"name": "防空型", "owned": False, "progress": ""},
+                {"name": "特種型", "owned": False, "progress": ""},
+                {"name": "干擾型", "owned": False, "progress": ""},
+            ]},
+            {"name": "海氏追隨者", "tech": 0, "owned": False},
+            {"name": "林鴞A100", "tech": 0, "owned": True},
+            {"name": "砂龍", "tech": 41, "owned": True},
+            {"name": "維塔斯 A021", "tech": 0, "owned": False},
+            {"name": "孢子A404", "tech": 0, "owned": True},
+            {"name": "新大地B192", "tech": 0, "owned": True},
+            {"name": "佩刀Aer410", "tech": 5, "owned": True},
+            {"name": "平衡安德森", "tech": 0, "owned": True},
+            {"name": "SC002", "tech": 4, "owned": True},
+            {"name": "AT021", "tech": 0, "owned": True, "variants": [
+                {"name": "脈衝型", "owned": True, "progress": ""},
+                {"name": "干擾型", "owned": False, "progress": "20%"},
+                {"name": "多功能", "owned": False, "progress": "0%"},
+            ]},
+            {"name": "維塔斯 B010", "tech": 106, "owned": True},
+            {"name": "刺鰩", "tech": 58, "owned": True},
+            {"name": "牛蛙", "tech": 10, "owned": True},
+            {"name": "BR050", "tech": 0, "owned": True, "variants": [
+                {"name": "反艦型", "owned": True, "progress": ""},
+                {"name": "多用途", "owned": False, "progress": "0%"},
+                {"name": "魚雷型", "owned": False, "progress": "0%"},
+            ]},
+        ],
+    },
 ]
 
 
@@ -288,39 +575,86 @@ def get_all_tags(items):
 
 
 def calculate_blueprint(data):
-    total = 0
-    owned = 0
+    total_ship = 0
+    owned_ship = 0
+
+    total_variant = 0
+    owned_variant = 0
+
+    total_module = 0
+    owned_module = 0
+
     total_tech = 0
 
     for category in data:
-        category_total = 0
-        category_owned = 0
+        category_ship_total = 0
+        category_ship_owned = 0
+
+        category_variant_total = 0
+        category_variant_owned = 0
+
+        category_module_total = 0
+        category_module_owned = 0
+
         category_tech = 0
 
         for ship in category["ships"]:
-            category_tech += ship["tech"]
-            total_tech += ship["tech"]
+            total_ship += 1
+            category_ship_total += 1
 
-            for variant in ship["variants"]:
-                total += 1
-                category_total += 1
+            if ship.get("owned", False):
+                owned_ship += 1
+                category_ship_owned += 1
 
-                if variant["owned"]:
-                    owned += 1
-                    category_owned += 1
+            tech = int(ship.get("tech", 0))
+            total_tech += tech
+            category_tech += tech
+
+            for variant in ship.get("variants", []):
+                total_variant += 1
+                category_variant_total += 1
+
+                if variant.get("owned", False):
+                    owned_variant += 1
+                    category_variant_owned += 1
+
+            for module in ship.get("modules", []):
+                total_module += 1
+                category_module_total += 1
+
+                if module.get("owned", False):
+                    owned_module += 1
+                    category_module_owned += 1
+
+        category["ship_total"] = category_ship_total
+        category["ship_owned"] = category_ship_owned
+        category["variant_total"] = category_variant_total
+        category["variant_owned"] = category_variant_owned
+        category["module_total"] = category_module_total
+        category["module_owned"] = category_module_owned
+        category["tech_sum"] = category_tech
+
+        category_total = category_ship_total + category_variant_total + category_module_total
+        category_owned = category_ship_owned + category_variant_owned + category_module_owned
 
         category["total"] = category_total
         category["owned"] = category_owned
         category["percent"] = round(category_owned / category_total * 100, 1) if category_total else 0
-        category["tech_sum"] = category_tech
 
-    percent = round(owned / total * 100, 1) if total else 0
+    total_all = total_ship + total_variant + total_module
+    owned_all = owned_ship + owned_variant + owned_module
 
     return {
-        "total": total,
-        "owned": owned,
-        "percent": percent,
-        "total_tech": total_tech
+        "ship_total": total_ship,
+        "ship_owned": owned_ship,
+        "variant_total": total_variant,
+        "variant_owned": owned_variant,
+        "module_total": total_module,
+        "module_owned": owned_module,
+        "total": total_all,
+        "owned": owned_all,
+        "percent": round(owned_all / total_all * 100, 1) if total_all else 0,
+        "total_tech": total_tech,
     }
 
 
