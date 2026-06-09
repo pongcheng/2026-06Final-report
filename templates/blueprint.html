@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-title">
+    <h1>星際獵人／無盡的拉格朗日藍圖統計系統</h1>
+    <p>
+        依照艦船分類、藍圖型號與科技點，統計目前帳號的藍圖收集狀況。
+    </p>
+</section>
+
+<section class="account-box">
+    <h2>帳戶選擇</h2>
+    <div class="account-buttons">
+        <button type="button">輻射誘惑</button>
+        <button type="button" class="active">霜飛冷燕</button>
+    </div>
+</section>
+
+<section class="summary">
+    <div>
+        <h3>全藍圖收集</h3>
+        <p>{{ summary.owned }} / {{ summary.total }}</p>
+    </div>
+
+    <div>
+        <h3>完成率</h3>
+        <p>{{ summary.percent }}%</p>
+    </div>
+
+    <div>
+        <h3>總科技點</h3>
+        <p>{{ summary.total_tech }}</p>
+    </div>
+</section>
+
+<form method="POST">
+
+    {% for category in data %}
+        {% set c_index = loop.index0 %}
+
+        <section class="blueprint-category">
+            <div class="category-header">
+                <h2>{{ category.category }}</h2>
+                <p>
+                    藍圖：{{ category.owned }} / {{ category.total }}
+                    ｜完成率：{{ category.percent }}%
+                    ｜科技點：{{ category.tech_sum }}
+                </p>
+            </div>
+
+            {% for ship in category.ships %}
+                {% set s_index = loop.index0 %}
+
+                <div class="ship-card">
+                    <div class="ship-title">
+                        <h3>{{ ship.name }}</h3>
+
+                        <label>
+                            科技點：
+                            <input
+                                type="number"
+                                name="tech_{{ c_index }}_{{ s_index }}"
+                                value="{{ ship.tech }}"
+                                min="0"
+                            >
+                        </label>
+                    </div>
+
+                    <div class="variant-area">
+                        {% for variant in ship.variants %}
+                            {% set v_index = loop.index0 %}
+
+                            <label class="variant">
+                                <input
+                                    type="checkbox"
+                                    name="owned_{{ c_index }}_{{ s_index }}_{{ v_index }}"
+                                    {% if variant.owned %}checked{% endif %}
+                                >
+                                {{ variant.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    {% endfor %}
+
+    <button type="submit" class="btn fixed-btn">重新計算統計</button>
+</form>
+
+{% endblock %}

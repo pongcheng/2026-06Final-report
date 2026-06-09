@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-title">
+    <h1>{{ page_title }}</h1>
+    <p>{{ page_desc }}</p>
+</section>
+
+<form method="POST" class="filter-box">
+    <h2>選擇你想要的條件</h2>
+
+    <div class="tag-area">
+        {% for tag in tags %}
+            <label class="tag">
+                <input
+                    type="checkbox"
+                    name="tags"
+                    value="{{ tag }}"
+                    {% if tag in selected_tags %}checked{% endif %}
+                >
+                {{ tag }}
+            </label>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn">開始推薦</button>
+    <a class="btn secondary" href="{{ request.path }}">清除條件</a>
+</form>
+
+<section class="result-area">
+    <h2>推薦結果</h2>
+
+    {% if items %}
+        <div class="grid">
+            {% for item in items %}
+                <div class="card">
+                    <h3>{{ item.name }}</h3>
+                    <p class="type">{{ item.type }}</p>
+                    <p>{{ item.reason }}</p>
+
+                    <div class="small-tags">
+                        {% for tag in item.tags %}
+                            <span>{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty">沒有符合條件的推薦，請重新選擇標籤。</p>
+    {% endif %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Python 期末報告網站</h1>
+    <p>
+        本網站使用 Python Flask 製作，整合四個主題：
+        7月新番推薦、三角洲 S9 槍枝推薦、J-POP 推薦、
+        星際獵人／無盡的拉格朗日藍圖統計。
+    </p>
+</section>
+
+<section class="grid">
+    <a class="card" href="/anime">
+        <h2>7月新番推薦系統</h2>
+        <p>依照熱血、科幻、日常、校園等標籤推薦動畫。</p>
+    </a>
+
+    <a class="card" href="/delta">
+        <h2>三角洲 S9 強力槍枝推薦系統</h2>
+        <p>依照近距離、遠距離、架點、突擊等需求推薦武器。</p>
+    </a>
+
+    <a class="card" href="/jpop">
+        <h2>J-POP 歌手／團體推薦系統</h2>
+        <p>依照曲風、歌手特色與聽歌情緒推薦 J-POP。</p>
+    </a>
+
+    <a class="card" href="/blueprint">
+        <h2>藍圖統計系統</h2>
+        <p>統計艦船藍圖收集率、科技點與各類艦船完成度。</p>
+    </a>
+</section>
+
+<section class="report-box">
+    <h2>專題說明</h2>
+    <p>
+        本專題的核心概念是「推薦系統 + 統計系統」。
+        前三個頁面使用標籤比對方式進行推薦，
+        第四個頁面則使用表單與勾選框計算藍圖收集完成度。
+    </p>
+</section>
+
+{% endblock %}
